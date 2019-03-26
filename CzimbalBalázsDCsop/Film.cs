@@ -6,6 +6,7 @@ namespace CzimbalBalázsDCsop
 {
     class Film : Media
     {
+        // erre van az enum
         // a stringek feleslegesek, mert nem használjuk külön sehol őket, csak a statikus init-nél
         // film műfajok
         private const string MUFAJAKCIO = "akció";
