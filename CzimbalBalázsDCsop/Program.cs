@@ -36,27 +36,33 @@ namespace CzimbalBalázsDCsop
             #region init
             for (int i = 0; i < mediak.Length; i++)
             {
-                // ENNÉL VAN ÁLTALÁNOSABB MEGOLDÁS!!!
+                string bekero = "Add meg a";
                 // első 5 film
                 if (i < 5)
                 {
-                    string cim = AdatBekeres<string>("Adja meg a film címét!");
+                    mufaj += "film";
                     int hossz = rnd.Next(45, 121);
-                    int megjelev = AdatBekeres<int>("Add meg a film megjelenési évét!");
-                    int minoseg = AdatBekeres<int>("Add meg a film minőségét!");
-                    string mufaj = AdatBekeres<string>("Add meg a film műfaját!", true);
-                    mediak[i] = new Film(cim, hossz, megjelev, minoseg, mufaj);
+                    int minoseg = AdatBekeres<string>(mufaj + " minőségét!");
+                    string mufaj = AdatBekeres<string>(mufaj + " műfaját!", true);
                 }
                 // utolsó 5 zene
                 else
                 {
-                    string cim = AdatBekeres<string>("Adja meg a zene címét!");
+                    mufaj += "zene";
                     int hossz = rnd.Next(3, 11);
-                    int megjelev = AdatBekeres<int>("Add meg a zene megjelenési évét!");
-                    string stilus = AdatBekeres<string>("Add meg a zene minőségét!");
-                    string eloado = AdatBekeres<string>("Add meg a zene műfaját!");
-                    string kodolas = AdatBekeres<string>("Add meg a zene kódolását!");
+                    string stilus = AdatBekeres<string>(mufaj + " stílusát!");
+                    string eloado = AdatBekeres<string>(mufaj + " előadóját!");
+                    string kodolas = AdatBekeres<string>(mufaj + " kódolását!");
+                }
+                string cim = AdatBekeres<string>(mufaj + " címét!");
+                int megjelev = AdatBekeres<int>(mufaj + " megjelenési évét!");
+                if(mufaj.Contains("zene")
+                {
                     mediak[i] = new Zene(cim, hossz, megjelev, stilus, eloado, kodolas);
+                }
+                else
+                {
+                    mediak[i] = new Film(cim, hossz, megjelev, minoseg, mufaj);
                 }
                 mediak[i].Kiir("");
             }
