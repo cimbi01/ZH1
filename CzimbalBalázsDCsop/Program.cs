@@ -20,7 +20,7 @@ namespace CzimbalBalázsDCsop
                 Console.WriteLine("Hibás adat: {0}", e.Message);
                 adatkonvertalt = AdatBekeres<T>(bekeroszoveg);
             }
-            // A bekérés tipusa mufaj és a film mufajok-jában nincs benne a kapott érték
+            // A bekérés tipusa bekero és a film mufajok-jában nincs benne a kapott érték
             if (mufaj && !Film.MUFAJOK.Contains(Convert.ToString(adatkonvertalt)))
             {
                 Console.WriteLine("Hibás adat:\nNincs benne a megadott mufaji listában");
@@ -34,29 +34,31 @@ namespace CzimbalBalázsDCsop
         {
             // init
             #region init
+            int hossz = 0, minoseg = 0;
+            string mufaj = "", stilus = "", eloado = "", kodolas = "";
             for (int i = 0; i < mediak.Length; i++)
             {
-                string bekero = "Add meg a";
+                string bekero = "Add meg a ";
                 // első 5 film
                 if (i < 5)
                 {
-                    mufaj += "film";
-                    int hossz = rnd.Next(45, 121);
-                    int minoseg = AdatBekeres<string>(mufaj + " minőségét!");
-                    string mufaj = AdatBekeres<string>(mufaj + " műfaját!", true);
+                    bekero += "film";
+                    hossz = rnd.Next(45, 121);
+                    minoseg = AdatBekeres<int>(bekero + " minőségét!");
+                    mufaj = AdatBekeres<string>(bekero + " műfaját!", true);
                 }
                 // utolsó 5 zene
                 else
                 {
-                    mufaj += "zene";
-                    int hossz = rnd.Next(3, 11);
-                    string stilus = AdatBekeres<string>(mufaj + " stílusát!");
-                    string eloado = AdatBekeres<string>(mufaj + " előadóját!");
-                    string kodolas = AdatBekeres<string>(mufaj + " kódolását!");
+                    bekero += "zene";
+                    hossz = rnd.Next(3, 11);
+                    stilus = AdatBekeres<string>(bekero + " stílusát!");
+                    eloado = AdatBekeres<string>(bekero + " előadóját!");
+                    kodolas = AdatBekeres<string>(bekero + " kódolását!");
                 }
-                string cim = AdatBekeres<string>(mufaj + " címét!");
-                int megjelev = AdatBekeres<int>(mufaj + " megjelenési évét!");
-                if(mufaj.Contains("zene")
+                string cim = AdatBekeres<string>(bekero + " címét!");
+                int megjelev = AdatBekeres<int>(bekero + " megjelenési évét!");
+                if(bekero.Contains("zene"))
                 {
                     mediak[i] = new Zene(cim, hossz, megjelev, stilus, eloado, kodolas);
                 }
