@@ -69,17 +69,20 @@ namespace CzimbalBalázsDCsop
             Console.WriteLine("Program Vége");
             Console.ReadKey();
         }
+        // nem kell a Media[] mediatar, mert a Media[] mediak statikus ezért hozzá tudna férni
         private static string MinKeres(Media[] mediatar)
         {
             int minindex = 0;
             for (int i = 0; i < mediatar.Length; i++)
             {
+                // item felesleges, elég lenne az index szerint hivatkozni rá
                 Media item = mediatar[i];
                 if (item.MegjelenesEve < mediatar[minindex].MegjelenesEve)
                 {
                     minindex = i;
                 }
             }
+            // cim felesleges, mert nem használjuk csak visszaadjuk
             string cim = mediatar[minindex].Cim;
             return cim;
         }
